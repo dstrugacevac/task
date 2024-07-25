@@ -8,9 +8,7 @@ The Product Management Application is a service built using Java 17, PostgreSQL,
 
 Before you start, ensure you have the following installed:
 
-- **Java 17**: Download and install Java 17 from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) or via a package manager.
 - **Docker**: Install Docker from [Docker's official website](https://www.docker.com/get-started).
-- **Maven**: Install Maven from [Apache Maven's official website](https://maven.apache.org/install.html).
 
 ## Running the Application
 
@@ -50,13 +48,11 @@ To run the application using Maven, follow these steps:
 
 ## API Documentation
 
-For detailed API documentation, please refer to the Swagger UI [here](#). This UI provides interactive API documentation and testing capabilities.
+For detailed API documentation, please refer to the Swagger UI [here](http://localhost:8080/swagger-ui.html). This UI provides interactive API documentation and testing capabilities.
 
 ## Additional Notes
 
-- **Database Setup:** Ensure your PostgreSQL database is up and running before executing the Maven commands or starting Docker. The connection details are provided in the `mvn clean install` command.
 - **Environment Variables:** Adjust the `DATASOURCE_JDBC_URL`, `DATASOURCE_USERNAME`, and `DATASOURCE_PASSWORD` as necessary to match your local or production database setup.
-
 
 For further assistance, consult the [Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) or reach out to the community.
 
