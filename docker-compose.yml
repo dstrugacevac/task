@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  task_local:
+    container_name: task_local
+    image: "postgres:14.1-alpine"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=product-task
+      - POSTGRES_USER=taskUser
+      - POSTGRES_PASSWORD=taskPassword
+    volumes:
+      - ./docker/local/task_local/data:/var/lib/postgresql/data
+  pgadmin:
+    container_name: task_local-pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    volumes:
+      - ./docker/local/pgadmin/servers.json:/pgadmin4/servers.json
+    restart: unless-stopped

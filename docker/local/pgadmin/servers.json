@@ -1,0 +1,13 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "Task",
+      "Group": "LOCAL",
+      "Port": 5432,
+      "Username": "taskUser",
+      "Host": "task_local",
+      "SSLMode": "prefer",
+      "MaintenanceDB": "product-task"
+    }
+  }
+}
