@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/product-task
+  flyway:
+    default-schema: public
+    schemas: public
+    table: schema_version
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  jooq:
+    sql-dialect: postgres
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+pom:
+  env-variables:
+    username: postgres
+    password: password
+    url: jdbc:postgresql://localhost:5432/product-task
+hnb:
+  domain: https://api.hnb.hr

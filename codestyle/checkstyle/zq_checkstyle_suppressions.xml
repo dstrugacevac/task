@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <!-- Skip checks for files-->
+    <suppress files="[/\\]\..+" checks=".*"/>
+    <suppress files="[/\\]src[/\\]gen[/\\]" checks=".*"/>
+    <suppress files="[/\\]target[/\\]" checks=".*"/>
+    <suppress files=".+\.(?:jar|zip|war|class|tar|bin)$" checks=".*"/>
+    <suppress files=".+\.(?:png|gif|jpg|jpeg)$" checks=".*"/>
+
+
+    <suppress files="pom.xml|.+\.(?:ad|adoc|asciidoc|feature|md|mkd|mkdn|mdown|markdown)$" id="check.lineLength"/>
+
+    <suppress checks="MagicNumber" files=".*[\\/]src[\\/](test|it)[\\/]"/>
+
+</suppressions>
