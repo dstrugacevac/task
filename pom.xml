@@ -40,6 +40,7 @@
 		<!-- Test -->
 		<version.testcontainers-bom>1.18.1</version.testcontainers-bom>
 		<version.rider-core>1.37.1</version.rider-core>
+
 	</properties>
 
 	<repositories>
@@ -153,6 +154,16 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>localstack</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.experimental</groupId>
+			<artifactId>spring-modulith-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.database-rider</groupId>
+			<artifactId>rider-spring</artifactId>
+			<version>${version.rider-core}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -316,25 +327,6 @@
 								</target>
 							</generator>
 						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>${version.checkstyle-maven-plugin}</version>
-				<configuration>
-					<!-- <violationSeverity>warning</violationSeverity> -->
-					<consoleOutput>true</consoleOutput>
-					<configLocation>codestyle/checkstyle/zq_checkstyle.xml</configLocation>
-					<suppressionsLocation>./codestyle/checkstyle/zq_checkstyle_suppressions.xml</suppressionsLocation>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
 					</execution>
 				</executions>
 			</plugin>

@@ -15,21 +15,18 @@ public class SwaggerConfiguration {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Ingemark Assignment task")
+                        .title("Ingemark Assignment Task")
                         .version("1.0")
-                        .description("David Strugacevac")
+                        .description("API documentation for Ingemark Assignment Task, developed by David Strugacevac")
                 )
                 .servers(servers());
     }
 
     private List<Server> servers() {
-
         Server localServer = new Server();
-        localServer.setUrl("localhost:8080");
-        localServer.setDescription("LOCAL env");
+        localServer.setUrl("http://localhost:8080");
+        localServer.setDescription("LOCAL environment");
 
         return List.of(localServer);
     }
-
-
 }

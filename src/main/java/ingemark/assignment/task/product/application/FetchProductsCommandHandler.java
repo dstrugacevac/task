@@ -22,8 +22,8 @@ public class FetchProductsCommandHandler extends AbstractCommandHandler<FetchCom
 
     @Override
     public FetchCommandResult<Product> handle(FetchCommand command) {
-        List<Product> certificateDefinitions = productRepository.fetch(command.pageable());
+        List<Product> products = productRepository.fetch(command.pageable());
         Long total = productRepository.total();
-        return new FetchCommandResult<>(certificateDefinitions, total);
+        return new FetchCommandResult<>(products, total);
     }
 }

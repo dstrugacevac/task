@@ -23,11 +23,11 @@ public class FindByIdProductCommandHandler
 
     @Override
     public FindByIdCommandResult<Product> handle(FindByIdCommand command) {
-        Product certificateDefinition = productRepository.findById(Id.of(command.id()))
+        Product product = productRepository.findById(Id.of(command.id()))
                 .orElseThrow(() -> NotFoundByIdException.notFoundByIdException(
                         command.id(),
                         ErrorSpecification.PRODUCT_NOT_FOUND));
 
-        return new FindByIdCommandResult<>(certificateDefinition);
+        return new FindByIdCommandResult<>(product);
     }
 }

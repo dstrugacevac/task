@@ -1,0 +1,9 @@
+PRODUCT:
+  - ID: "42737c47-c5f5-443c-bda4-03f2634e53b6"
+    NAME: "Test name"
+    CODE: 'TestCode21'
+    PRICE_EUR: 10
+    IS_AVAILABLE: 'TRUE'
+    CREATED_AT: 'regex: .*'
+    UPDATED_AT: 'regex: .*'
+    DELETED_AT:

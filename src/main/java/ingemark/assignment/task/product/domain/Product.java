@@ -7,6 +7,7 @@ import ingemark.assignment.task.shared.id.Id;
 import ingemark.assignment.task.shared.name.Name;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Objects;
@@ -15,7 +16,7 @@ import java.util.Objects;
 @ToString
 @Builder
 @Getter
-
+@Setter
 public class Product extends Aggregate<Product> {
 
     private final Id id;

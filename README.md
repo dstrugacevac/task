@@ -4,27 +4,40 @@
 
 The Product Management Application is a service built using Java 17, PostgreSQL, and Spring Boot. It provides RESTful endpoints to manage products, including fetching individual products, listing all products, and creating new products.
 
+## Note
+
+I know the application is usually run via Docker, and I have a script for that, but due to the generation of database data within the project, I simply need an external database just for the build. Therefore, you cannot run it directly through Docker because I don't have a hosted database.
+
 ## Prerequisites
 
 Before you start, ensure you have the following installed:
 
-- **Docker**: Install Docker from [Docker's official website](https://www.docker.com/get-started).
+- **Java 17**: Download and install Java 17 from the [official Oracle website](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) or via a package manager.
+- **Maven**: Install Maven from [Apache Maven's official website](https://maven.apache.org/install.html).
+- **PostgreSQL**: Install PostgreSQL from [PostgreSQL's official website](https://www.postgresql.org/download/).
 
-## Running the Application
+## Setting Up the Database
 
-### Using Docker
-
-To run the application using Docker, follow these steps:
-
-1. **Ensure Docker is running** on your machine.
-2. **Navigate to the project directory** containing the `docker-compose.yml` file.
-3. **Execute the following command**:
+1. **Start PostgreSQL** on your machine and log into the PostgreSQL command line interface:
 
     ```sh
-    docker-compose up
+    psql -U postgres
     ```
 
-This command will build and start the application along with the PostgreSQL database.
+2. **Create the `product-task` database**:
+
+    ```sql
+    CREATE DATABASE "product-task";
+    ```
+
+3. **Create a user with necessary permissions**:
+
+    ```sql
+    CREATE USER taskUser WITH ENCRYPTED PASSWORD 'taskPassword';
+    GRANT ALL PRIVILEGES ON DATABASE "product-task" TO taskUser;
+    ```
+
+## Running the Application
 
 ### Using Maven
 
@@ -48,7 +61,7 @@ To run the application using Maven, follow these steps:
 
 ## API Documentation
 
-For detailed API documentation, please refer to the Swagger UI [here](http://localhost:8080/swagger-ui.html). This UI provides interactive API documentation and testing capabilities.
+For detailed API documentation, please refer to the Swagger UI [here](http://localhost:8080/swagger-ui/index.html). This UI provides interactive API documentation and testing capabilities.
 
 ## Additional Notes
 
@@ -57,4 +70,3 @@ For detailed API documentation, please refer to the Swagger UI [here](http://loc
 For further assistance, consult the [Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/) or reach out to the community.
 
 ---
-

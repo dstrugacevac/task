@@ -1,25 +1,46 @@
 version: '3.3'
 services:
-  task_local:
-    container_name: task_local
+  postgres:
+    container_name: postgres
     image: "postgres:14.1-alpine"
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=product-task
-      - POSTGRES_USER=taskUser
-      - POSTGRES_PASSWORD=taskPassword
-    volumes:
-      - ./docker/local/task_local/data:/var/lib/postgresql/data
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   pgadmin:
-    container_name: task_local-pgadmin
+    container_name: product-task-pgadmin
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-password}
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     volumes:
-      - ./docker/local/pgadmin/servers.json:/pgadmin4/servers.json
+      - ./docker/local/pgadmin/servers.json:/pgadmin/servers.json
     restart: unless-stopped
+
+  product-task:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: local
+      DATABASE_URL: jdbc:postgresql://postgres:5432/postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: password
+
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy

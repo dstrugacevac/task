@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: product-task
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    url: ${DATABASE_URL}
+  flyway:
+    default-schema: public
+    schemas: public
+    table: schema_version
+    user: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    url: ${DATABASE_URL}
+
+hnb:
+  domain: https://api.hnb.hr

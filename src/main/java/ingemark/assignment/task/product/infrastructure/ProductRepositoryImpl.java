@@ -24,8 +24,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     private final ProductPersistenceMapper mapper;
     private final List<TableField> PRODUCT_SELECT_FIELDS = List.of(
-            PRODUCT.ID, PRODUCT.NAME, PRODUCT.CODE, PRODUCT.PRICE_EUR, PRODUCT.PRICE_USD,
-            PRODUCT.IS_AVAILABLE
+            PRODUCT.ID, PRODUCT.NAME, PRODUCT.CODE, PRODUCT.PRICE_EUR, PRODUCT.IS_AVAILABLE
     );
 
     public ProductRepositoryImpl(DSLContext dslContext, ProductPersistenceMapper mapper) {
@@ -36,10 +35,10 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public Optional<Product> save(Product product) {
         Record savedRecord = dslContext.insertInto(PRODUCT)
-                .columns(PRODUCT.ID, PRODUCT.NAME, PRODUCT.CODE, PRODUCT.PRICE_EUR, PRODUCT.PRICE_USD,
+                .columns(PRODUCT.ID, PRODUCT.NAME, PRODUCT.CODE, PRODUCT.PRICE_EUR,
                         PRODUCT.IS_AVAILABLE, PRODUCT.CREATED_AT, PRODUCT.UPDATED_AT)
                 .values(product.getId().id(), product.getName().value(), product.getCode().value(),
-                        product.getPriceEur().value(), product.getPriceUsd().value(), product.getIsAvailable().value(),
+                        product.getPriceEur().value(), product.getIsAvailable().value(),
                         DateUtil.now(), DateUtil.now())
                 .returningResult(PRODUCT.ID)
                 .fetchOne();
